@@ -1,0 +1,44 @@
+
+.btn-twitter,
+.btn-twitter.btn-circle > i {
+    background-color: $twitter;
+    color:#fff;
+}
+
+.btn-twitter:hover,
+.btn-twitter:focus,
+.btn-twitter:active,
+.btn-twitter.active,
+.btn-twitter.btn-circle:hover > i{
+    background-color: $twitter-hover;
+    color: #fff;
+}
+
+.btn-facebook,
+.btn-facebook.btn-circle > i {
+    background-color: $facebook;
+    color: #fff;
+}
+
+.btn-facebook:hover,
+.btn-facebook:focus,
+.btn-facebook:active,
+.btn-facebook.active,
+.btn-facebook.btn-circle:hover > i {
+    background-color: $facebook-hover;
+    color: #fff;
+}
+
+.btn-google,
+.btn-google.btn-circle > i{
+    background-color: $google;
+    color: #fff;
+}
+.btn-google:hover,
+.btn-google:focus,
+.btn-google:active,
+.btn-google.active,
+.btn-google.btn-circle:hover > i {
+    color: #fff;
+    background-color: $google-hover;
+}

@@ -1,0 +1,354 @@
+    //## Base theme color file
+
+
+    /* Page sidebar */
+
+    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover,
+    .page-sidebar {
+        background-color: $bg-color;
+
+        /* Default sidebar */
+        .page-sidebar-menu {
+
+            /* 1st level links */
+
+            > li {
+                > a {
+                    border-top: 1px solid $sidebar-menu-devider-border-color;
+                    color: $sidebar-menu-link-font-color;
+
+                    > i {
+                        color: $sidebar-menu-link-icon-font-color;
+                    }
+
+                    > i[class^="icon-"],
+                    > i[class*="icon-"] {
+                        @if $theme-name == "light" {
+                            color: darken($sidebar-menu-link-icon-font-color, 15%);
+                        } @else if $theme-name == "light2" {
+                            color: darken($sidebar-menu-link-icon-font-color, 15%);
+                        } @else {
+                            color: lighten($sidebar-menu-link-icon-font-color, 5%);
+                        }
+                    }
+
+                    > .arrow {
+                        &:before,
+                        &.open:before {
+                            color: $sidebar-menu-arrow-color;
+                        }
+                    }
+                }
+
+                &.heading {
+                    > h3 {
+                        color: darken($sidebar-menu-link-font-color, 23%);
+                    }
+                }
+
+                &:hover,
+                &.open {
+                    > a {
+                        background: $sidebar-menu-link-bg-color-on-hover;
+                        color: $sidebar-menu-link-font-color-on-hover;
+
+                        > i {
+                            color: $sidebar-menu-link-icon-font-color-on-hover;
+                        }
+
+                        > .arrow {
+                            &:before,
+                            &.open:before {
+                                color: $sidebar-menu-arrow-color-on-hover;
+                            }
+                        }
+                    }
+                }
+
+                &.active,
+                &.active.open {
+                    > a {
+                        background: $sidebar-menu-link-bg-color-on-active;
+                        border-top-color: transparent;
+                        color: $sidebar-menu-link-font-color-on-active;
+
+                        &:hover {
+                            background: $sidebar-menu-link-bg-color-on-active;
+                        }
+
+                        > i {
+                            color: $sidebar-menu-link-icon-font-color-on-active;
+                        }
+
+                        > .arrow {
+                            &:before,
+                            &.open:before {
+                                color: $sidebar-menu-arrow-color-on-active;
+                            }
+                        }
+                    }
+                }
+
+                &.active + li {
+                    > a {
+                        border-top-color: transparent;
+                    }
+                }
+
+                &.active.open + li {
+                    > a {
+                        border-top-color: $sidebar-menu-devider-border-color;
+                    }
+                }
+
+                &:last-child {
+                    > a {
+                        border-bottom: 1px solid transparent !important;
+                    }
+                }
+            }
+
+            /* All links */
+
+            li {
+                > a {
+                    > .arrow {
+                        &:before,
+                        &.open:before {
+                            color: $sidebar-menu-arrow-color;
+                        }
+                    }
+                }
+
+                &:hover {
+                    > a {
+                        > .arrow {
+                            &:before,
+                            &.open:before {
+                                color: $sidebar-menu-arrow-color-on-hover;
+                            }
+                        }
+                    }
+                }
+
+                &.active {
+                    > a {
+                        > .arrow {
+                            &:before,
+                            &.open:before {
+                                color: $sidebar-menu-arrow-color-on-active;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .page-sidebar-closed &:hover {
+                .sub-menu {
+                    background-color: $bg-color;
+                }
+            }
+
+            .sub-menu {
+                > li {
+                    > a {
+                        color: $sidebar-menu-sub-menu-link-font-color;
+
+                        > i {
+                            color: $sidebar-menu-sub-menu-link-icon-font-color;
+                        }
+
+                        > i[class^="icon-"],
+                        > i[class*="icon-"] {
+                            @if $theme-name == "light" {
+                                color: darken($sidebar-menu-link-icon-font-color, 15%);
+                            } @else if $theme-name == "light2" {
+                                color: darken($sidebar-menu-link-icon-font-color, 15%);
+                            } @else {
+                                color: lighten($sidebar-menu-link-icon-font-color, 5%);
+                            }
+                        }
+
+                        > .arrow {
+                            &:before,
+                            &.open:before {
+                                color: $sidebar-menu-arrow-color;
+                            }
+                        }
+                    }
+
+                    &:hover,
+                    &.open,
+                    &.active {
+                        > a {
+                            background: $sidebar-menu-sub-menu-link-bg-color-on-hover !important;
+
+                            > i {
+                                color: $sidebar-menu-sub-menu-link-icon-font-color-on-hover;
+                                @if $theme-name == "light" {
+                                    color: darken($sidebar-menu-link-icon-font-color, 15%);
+                                } @else if $theme-name == "light2" {
+                                    color: darken($sidebar-menu-link-icon-font-color, 15%);
+                                } @else {
+                                    color: lighten($sidebar-menu-link-icon-font-color, 20%);
+                                }
+                            }
+
+                            > .arrow {
+                                &:before,
+                                &.open:before {
+                                    color: $sidebar-menu-arrow-color-on-hover;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /* light sidebar */
+        .page-sidebar-menu.page-sidebar-menu-light {
+
+            /* 1st level links */
+            > li {
+                &:hover,
+                &.open {
+                    > a {
+                        background: $light-sidebar-menu-link-bg-color-on-hover;
+                    }
+                }
+
+                &.active,
+                &.active.open {
+                    > a {
+                        background: $light-sidebar-menu-link-bg-color-on-active;
+                        border-left: 4px solid $light-sidebar-menu-link-border-color;
+                        color: $light-sidebar-menu-link-font-color-on-active;
+
+                        &:hover {
+                            border-left: 4px solid $sidebar-menu-link-bg-color-on-active;
+                            background: $light-sidebar-menu-link-bg-color-on-hover;
+                        }
+
+                        > i {
+                            color: $light-sidebar-menu-link-icon-color-on-active;
+                        }
+
+                        > .arrow {
+                            &:before,
+                            &.open:before {
+                                color: $light-sidebar-menu-link-arrow-color-on-active;
+                            }
+                        }
+                    }
+                }
+
+                .sub-menu {
+                    background: $light-sidebar-menu-sub-menu-bg-color;
+
+                    > li {
+                        &:hover,
+                        &.open,
+                        &.active {
+                            > a {
+                                background: $light-sidebar-menu-sub-menu-link-bg-color-on-hover !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .sidebar-toggler {
+            // background: url();
+        }
+
+        /* Sidebar search */
+
+        .sidebar-search {
+
+            .input-group {
+                border-bottom: 1px solid $sidebar-search-bottom-border-color;
+
+                .form-control {
+                    background-color: $bg-color;
+                    color: $sidebar-search-input-font-color;
+                    @include placeholder($sidebar-search-input-placeholder-font-color);
+                }
+
+                .input-group-btn {
+                    .btn {
+                        > i {
+                            color: $sidebar-search-input-font-color;
+                        }
+                    }
+                }
+            }
+
+            &.sidebar-search-bordered {
+                .input-group {
+                    border: 1px solid $sidebar-search-full-border-color;
+                }
+            }
+
+            .page-sidebar-closed &.open {
+                .input-group {
+                    background-color: $bg-color;
+                }
+
+                .remove {
+                    > i {
+                        color: $sidebar-search-input-font-color;
+                    }
+                }
+            }
+
+            &.sidebar-search-solid {
+
+                .page-sidebar-closed & {
+                    .input-group {
+                        background: none;
+                    }
+                }
+
+                .input-group {
+                    border: 1px solid $sidebar-search-bg-color;
+                    background: $sidebar-search-bg-color;
+
+                    .form-control {
+                        background: $sidebar-search-bg-color;
+                    }
+                }
+
+                &.open .input-group {
+                    border: 1px solid $bg-color;
+                    background: $bg-color;
+
+                    .form-control {
+                        background: $bg-color;
+                    }
+                }
+            }
+        }
+    }
+
+    .page-sidebar-reversed {
+
+        .page-sidebar-menu.page-sidebar-menu-light {
+            /* 1st level links */
+            > li {
+                &.active,
+                &.active.open {
+                    > a {
+                        border-left: 0;
+                        border-right: 4px solid $light-sidebar-menu-link-border-color;
+
+                        &:hover {
+                            border-left: 0;
+                            border-right: 4px solid $sidebar-menu-link-bg-color-on-active;
+                        }
+                    }
+                }
+            }
+        }
+    }

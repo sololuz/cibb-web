@@ -1,0 +1,28 @@
+{% extends 'layouts/base.html' %}
+{% load i18n crispy_forms_tags %}
+{% load static from staticfiles %}
+{% block title %}{% trans "Log in" %}{% endblock %}
+
+{% block body_class %}new-account{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        {% include "account/partials/_navbar_base.html" %}
+        <h1 class="title">{% trans "Create a new Account" %}</h1>
+        <div class="app-container">
+            <div class="col-md-8">
+                <div class="explain">
+                    <h3>Lleva tu información a todas partes.</h3>
+                    <img src="{% static 'img/thumb.jpg' %}" alt="Portability" class="thumb">
+                    <p class="phrase">
+                    <i class="fa fa-quote-left"></i>
+                    ...El viaje de mil millas empieza por un paso. <strong>@jvacx</strong>
+                    <i class="fa fa-quote-right"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                {% crispy form %}
+            </div>
+        </div>
+    </div>
+{% endblock  %}

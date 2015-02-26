@@ -1,0 +1,47 @@
+
+
+//## Responsive property utils
+@-ms-viewport{
+  width: device-width;
+}
+
+@mixin into-xs($property: jx, $value: 0){
+    @media (max-width:$screen-xs-max) {
+        @if $property != jx { #{$property}: #{$value}; }
+        @content;
+    }
+}
+
+@mixin into-sm($property: jx, $value: 0){
+    @media (min-width:$screen-sm-min) and (max-width:$screen-sm-max) {
+        @if $property != jx { #{$property}: #{$value}; }
+        @content;
+    }
+}
+
+@mixin into-md($property: jx, $value: 0){
+    @media (min-width:$screen-md-min) and (max-width:$screen-md-max) {
+        @if $property != jx { #{$property}: #{$value}; }
+        @content;
+    }
+}
+
+@mixin into-lg($property: jx, $value: 0){
+    @media (min-width:$screen-lg-min) {
+        @if $property != jx { #{$property}: #{$value}; }
+        @content;
+    }
+}
+
+// $sizes: xs, sm, md, lg; // This order is ery important
+// $attrs: margin, margin-top, margin-bottom, margin-left, margin-right;
+// $cnt: 0px;
+
+
+// @each $attr in $attrs {
+//     $cnt : $cnt + $gutter;
+// }
+
+
+
+

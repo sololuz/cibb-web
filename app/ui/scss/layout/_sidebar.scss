@@ -1,0 +1,55 @@
+/* -------------------------------------------------------------------------- *\
+    ## App Sidebar
+\* -------------------------------------------------------------------------- */
+
+.app-sidebar {
+	background: #efefef;
+	left: 0;
+	height: 100%;
+	margin-top: $header-height;
+	position: fixed;
+	width: $sidebar-width;
+
+	@include into-xs {
+		width: 250px;
+	}
+    .app-sidebar-nav.navbar-collapse {
+        padding-left: 0;
+        padding-right: 0;
+    }
+	.app-sidebar-search {
+	    padding: 15px;
+	}
+	ul li {
+	    border-bottom: 1px solid darken(#efefef, 6.5%);
+	    a.active {
+	        background-color: #efefef;
+	    }
+	}
+
+	.arrow {
+		position: absolute;
+	    right: 0;
+	    padding: 0px 15px;
+	    font-size: 18px;
+	}
+
+	.fa.arrow:before { content: "\f104"; }
+
+	.active > a > .fa.arrow:before { content: "\f107";	}
+
+	.nav-second-level li,
+	.nav-third-level li {
+	    border-bottom: none !important;
+	}
+
+	.nav-second-level li a {
+	    padding-left: 37px;
+	}
+
+	.nav-third-level li a {
+	    padding-left: 52px;
+	}
+}
+
+

@@ -1,0 +1,157 @@
+/* -------------------------------------------------------------------------- *\
+    ## Custom Checkbox
+    Dependency:  FontAwesome
+\* -------------------------------------------------------------------------- */
+
+$checkbox-size: 20px;
+
+.checkbox,
+.radio {
+    cursor: pointer;
+    margin-bottom: 12px;
+    padding-left: 28px;
+    position: relative;
+    transition: all .25s linear;
+
+    input {
+        outline: none !important;
+        display: none;
+    }
+
+// ## Replace icons
+// -----------------------------------------------------------------------------
+    .icons {
+        color: $brand-default;
+        display: block;
+        font-size: $checkbox-size;
+        height: $checkbox-size;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: $checkbox-size;
+        text-align: center;
+        line-height: $checkbox-size;
+        transition: all .25s linear;
+
+        .first-icon-icon,
+        .second-icon {
+            display: inline-block;
+            left: 0;
+            top: 0;
+            position: absolute;
+            height: $checkbox-size;
+            width: $checkbox-size;
+            opacity: 1;
+            font-family: 'FontAwesome';
+            transition: all .3s linear;
+
+        }
+        .second-icon { opacity: 1; }
+    }
+
+    .radio-unchecked:before {
+        content: "\f10c";
+    }
+    .radio-checked:before {
+        content: "\f046";
+    }
+    .checkbox-unchecked:before {
+        content: "\f0c8";
+    }
+    .checkbox-checked:before {
+        content: "\f14a";
+    }
+
+// ## Hover state
+// -----------------------------------------------------------------------------
+
+    &:hover {
+        .first-icon {
+            opacity: 1;
+        }
+        .second-icon {
+            opacity: 1;
+        }
+    }
+
+    // Checked State
+    &.checked {
+        .first-icon { opacity: 0; }
+        .second-icon { opacity: 1; }
+    }
+
+    // Disabled state
+    &.disabled {
+        cursor: default;
+        color: mix($brand-default, white, 38%);
+        .icons { color: mix($brand-default, white, 38%);  }
+        .first-icon { opacity: 1; }
+        .second-icon { opacity: 0; }
+        &.checked {
+            .icons { color: mix($brand-default, white, 38%); }
+            .first-icon { opacity: 0; }
+            .second-icon { opacity: 1; }
+        }
+    }
+
+// ## Bootstrap like states
+// -----------------------------------------------------------------------------
+
+    // ## Primary
+    &.checkbox-primary {
+        .icons { color: $brand-primary;  }
+        &.checked .icons { color: $brand-primary; }
+        &.disabled {
+            cursor: default;
+            color: mix($brand-primary, white, 38%);
+            .icons { color: mix($brand-primary, white, 38%);  }
+            &.checked .icons { color: $brand-primary; }
+        }
+    }
+    // ## Success
+    &.checkbox-success {
+        .icons { color: $brand-success;  }
+        &.checked {
+            .icons { color: $brand-success; }
+        }
+        &.disabled {
+            cursor: default;
+            color: mix($brand-success, white, 38%);
+            .icons { color: mix($brand-success, white, 38%);  }
+            &.checked .icons { color: $brand-success; }
+        }
+    }
+    // ## Info
+    &.checkbox-info {
+        .icons { color: $brand-info;  }
+        &.checked .icons { color: $brand-info; }
+        &.disabled {
+            cursor: default;
+            color: mix($brand-info, white, 38%);
+            .icons { color: mix($brand-info, white, 38%);  }
+            &.checked .icons { color: $brand-info; }
+        }
+    }
+    // ## Warning
+    &.checkbox-warning {
+        .icons { color: $brand-warning;  }
+        &.checked .icons { color: $brand-warning; }
+        &.disabled {
+            cursor: default;
+            color: mix($brand-warning, white, 38%);
+            .icons { color: mix($brand-warning, white, 38%);  }
+            &.checked .icons { color: $brand-warning; }
+        }
+    }
+    // ## Danger
+    &.checkbox-danger {
+        .icons { color: $brand-danger;  }
+        &.checked .icons { color: $brand-danger; }
+        &.disabled {
+            cursor: default;
+            color: mix($brand-danger, white, 38%);
+            .icons { color: mix($brand-danger, white, 38%);  }
+            &.checked .icons { color: $brand-danger; }
+        }
+    }
+}

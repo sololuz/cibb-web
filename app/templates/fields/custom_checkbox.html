@@ -1,0 +1,13 @@
+{% load crispy_forms_field %}
+{% if field.is_hidden %}
+    {{ field }}
+{% else %}
+    <label class="checkbox {{ type_checkbox }}" for="{{ field.id_for_label }}">
+        <span class="icons">
+            <span class="first-icon checkbox-unchecked"></span>
+            <span class="second-icon checkbox-checked"></span>
+        </span>
+        <input type="checkbox" value="" id="{{ field.id_for_label }}" data-toggle="checkbox" name="{{ field.id_for_label }}">
+        {{ field.label|safe }}{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
+    </label>
+{% endif %}

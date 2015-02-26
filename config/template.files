@@ -1,0 +1,14 @@
+app/
+docs/
+requirements/
+var/
+config/
+
+.gitignore
+LICENSE.rst
+Makefile
+README.rst
+Vagrantfile
+fabfile.py
+setup.py
+setup.cfg

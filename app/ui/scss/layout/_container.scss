@@ -1,0 +1,52 @@
+/***
+Page container
+***/
+
+.app-container {
+  	margin: 0px;
+  	padding: 0px;
+  	position: relative;
+
+  	@include clearfix();
+
+  	/* Fixed header */
+	.app-header-fixed & {
+		margin-top: $header-height;
+	}
+
+	/* Fixed footer for mobile */
+	.app-footer-fixed.app-footer-fixed-mobile & {
+		margin-bottom: 20px !important;
+	}
+}
+
+@media (min-width: $screen-md-min) {
+
+	/* Page container in fixed footer */
+	.app-footer-fixed .app-container {
+	 	margin-bottom: 20px !important;
+	}
+}
+
+@media (max-width: $screen-sm-max) {
+
+	/* Page container */
+	.app-container {
+		margin: 0 !important;
+		padding: 0 !important;
+
+		.app-header-fixed.app-header-fixed-mobile & {
+			margin-top: $header-height !important;
+		}
+	}
+}
+
+@media (max-width: $screen-xs-min) {
+
+	/* Page container */
+	.app-container {
+		.app-header-fixed.app-header-fixed-mobile & {
+  			margin-top: $header-height-xs !important;
+  		}
+  	}
+}

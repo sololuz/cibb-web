@@ -1,0 +1,9 @@
+{% load socialaccount %}
+{% load i18n %}
+{% for provider in socialaccount.providers %}
+    <a class="btn btn-lg btn-block btn-{{provider.id}}"
+       href="{% provider_login_url provider.id process=process %}">
+       <i class="fa pull-left fa-{{provider.id}}"></i>
+       {% trans 'Sign in with' %} {{provider.name}}
+    </a>
+{% endfor %}

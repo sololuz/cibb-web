@@ -1,0 +1,27 @@
+{% extends 'layouts/base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Home" %}{% endblock %}
+{% block content %}
+    {% include "partials/_navbar.html" %}
+    <section class="app-container">
+        {% include "partials/_sidebar.html" %}
+        {% include "partials/_content.html" %}
+    </section>
+    <footer style="margin: 100px 0px 0px 500px;">
+        {{user.id}} - {{user.username}} - {{user.first_name}} - {{user.email}}
+        <div class="col-sm-12 ">
+            <a class="btn btn-primary" href="{% url 'users:update' %}">My Info</a>
+            <a class="btn btn-primary" href="{% url 'account_email' %}">E-Mail</a>
+            <a class="btn btn-info" href="{% url 'avatar_change' %}">Avatar</a>
+            <!-- Your Stuff: Custom user template urls
+            -->
+        </div>
+    </footer>
+{% endblock %}
+
+{% block extrascripts %}{% endblock extrascripts %}
+
+
+
+
+

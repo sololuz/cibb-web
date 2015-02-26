@@ -1,0 +1,92 @@
+
+### Bleeding edge Django
+##------------------------------------------------------------------------------
+
+django
+
+
+### RESTful API
+##------------------------------------------------------------------------------
+
+djangorestframework
+django-oauth2-provider
+django-rest-swagger
+
+
+### CORS Protection
+##------------------------------------------------------------------------------
+django-cors-headers
+
+
+### Configuration
+##------------------------------------------------------------------------------
+django-secure==1.0.1
+
+
+# https://github.com/ghickman/django-cache-url
+django-cache-url==0.8.0
+
+# https://crate.io/packages/dj-database-url/
+dj-database-url==0.3.0
+
+
+### Forms
+##------------------------------------------------------------------------------
+django-braces==1.4.0
+django-crispy-forms==1.4.0
+# django-floppyforms==1.2.0
+
+
+### Sites
+##------------------------------------------------------------------------------
+
+# http://niwibe.github.io/django-sites/
+django-sites==0.8
+
+
+### Models
+##------------------------------------------------------------------------------
+
+# http://bit.ly/1D212zH
+django-model-utils==2.2
+
+
+### Files
+##------------------------------------------------------------------------------
+
+# images
+sorl-thumbnail
+Pillow==2.6.0
+
+# Compression files
+django_compressor==1.4
+
+
+# For the persistance stores
+psycopg2==2.5.4
+
+# Unicode slugification
+unicode-slugify==0.1.1
+Unidecode==0.04.16
+django-autoslug==1.7.2
+
+# Useful things
+django-avatar==2.0
+
+# versionable content
+django-reversion==1.8.2
+
+# Time zones support
+pytz==2014.7
+
+#Email asyncronous sending
+djmail==0.9
+
+# Extras of python 3
+enum34==1.0
+
+#admin
+git+https://github.com/barszczmm/django-wpadmin.git#egg=django-wpadmin
+
+#Trash
+django-allauth

@@ -1,0 +1,128 @@
+
+.input-block {
+    width: 100%;
+}
+
+.input-mt {
+    display: inline-block;
+    position: relative;
+    margin: 16px 0px 0px 0px;
+    background-color: transparent;
+    box-sizing: border-box;
+    font-size: 1em;
+
+    input {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px inset rgba(0,0,0,0.2);
+        padding: .65em;
+        width: 100%;
+    }
+
+    input ~ span {
+        box-sizing: border-box;
+        display: block;
+        width: 0;
+        height: 3px;
+        background: $brand-default;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        -webkit-transition: all 0.125s ease;
+        transition: all 0.125s ease;
+    }
+    input:focus ~ label,
+    input:valid ~ label {
+        color: $brand-default;
+        font-size: 0.75em;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        top: -1.5em;
+        transition: all 0.125s ease;
+        -webkit-transition: all 0.125s ease;
+    }
+
+    input:not(:focus) ~ label {
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        color: $inactive-text-color !important;
+    }
+
+    label {
+        color: $inactive-text-color;
+        padding: .65em;
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-transition: all 0.25s ease;
+        transition: all 0.25s ease;
+        pointer-events: none;
+    }
+
+    input:focus { outline: 0; }
+
+    input:focus ~ span {
+        width: 100%;
+        -webkit-transition: all 0.075s ease;
+        transition: all 0.075s ease;
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 15em;
+    }
+    &.wide { width: 100%; }
+
+    &.icon-left .icon,
+    &.icon-right .icon {
+        position: absolute;
+        bottom: 0;
+        padding: 1em .8em;
+    }
+    &.icon-left {
+        input, label { padding-left: 2.3em; }
+        .icon { left: 0; }
+    }
+    &.icon-right {
+        input, label { padding-right: 2.3em; }
+        .icon { right: 0; }
+    }
+
+
+    &.input-default {
+        input ~ span { background: $brand-default; }
+        input:focus ~ label,
+        input:valid ~ label { color: $brand-default; }
+    }
+
+    &.input-primary {
+        input ~ span { background: $brand-primary; }
+        input:focus ~ label,
+        input:valid ~ label { color: $brand-primary; }
+    }
+    &.input-success {
+        input ~ span { background: $brand-success; }
+        input:focus ~ label,
+        input:valid ~ label { color: $brand-success; }
+    }
+    &.input-info {
+        input ~ span { background: $brand-info; }
+        input:focus ~ label,
+        input:valid ~ label { color: $brand-info; }
+    }
+    &.input-warning {
+        input ~ span { background: $brand-warning; }
+        input:focus ~ label,
+        input:valid ~ label { color: $brand-warning; }
+    }
+    &.input-danger {
+        input ~ span { background: $brand-danger; }
+        input:focus ~ label,
+        input:valid ~ label { color: $brand-danger; }
+    }
+}
+
+
+
+
+

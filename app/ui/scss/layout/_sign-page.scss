@@ -1,0 +1,136 @@
+/* -------------------------------------------------------------------------- *\
+    ## Login and bsic operations
+\* -------------------------------------------------------------------------- */
+.sign-form {
+    background-color: #efefef !important;
+
+    .logo {
+        border-bottom: 5px;
+        height: 100px;
+        margin: 0 auto;
+        margin-top:60px;
+        padding: 15px;
+        position: relative;
+        text-align: center;
+        img {
+            height: 100%;
+        }
+    }
+
+    .content {
+        color: $darken;
+        background-color:#fff;
+        width: 360px;
+        margin: 0 auto;
+        margin-bottom: 0px;
+        padding: 30px;
+        padding-top: 20px;
+        padding-bottom: 15px;
+        h3 { color: #000; }
+        h4 { color: #555; }
+        p { color: #222; }
+
+        .login-form,
+        .forget-form {
+            padding: 0px;
+            margin: 0px;
+        }
+        .description {
+            font-size: 13px;
+            color: #efefef;
+            text-align: justify;
+        }
+
+        .help-block strong{
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        hr {
+            border-style: dashed;
+            border-color: #c4c4c4;
+            background: transparent;
+            height: 3px;
+            margin: 15px 0;
+        }
+        .alert ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+        }
+        .login-form .form-control {
+            height: 43px;
+        }
+        .form-title {
+            color: $darken;
+            font-weight: 300;
+            margin: 10px 0 15px 0;
+            text-align: center;
+        }
+        .login-form input[type="checkbox"] {
+            width: 30px;
+        }
+        .btn-lg {
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .text-muted {
+            margin-top: -15px;
+            font-size: 13px;
+            color: gray;
+        }
+    }
+}
+
+/* -------------------------------------------------------------------------- *\
+    ## Signup
+\* -------------------------------------------------------------------------- */
+.new-account {
+    .form-control {
+        height: 40px;
+    }
+    .row [class^="col-"] {
+        padding: 0;
+    }
+    .user-form {
+        background-color: #efefef;
+        padding: 25px;
+        border-radius: 5px;
+        margin-bottom: 40px;
+    }
+    .explain {
+        padding: 15px 0px;
+        width: 100%;
+        h3 {
+            color: $darken;
+            text-align: center;
+            font-weight: 400;
+        }
+        .phrase {
+            padding: 7px 15px;
+            margin: 0 40px;
+            font-weight: 400;
+            font-size: 1.2em;
+            text-align: right;
+        }
+        img.thumb {
+            display: block;
+            margin: 35px auto;
+            width: 550px;
+            @include into-sm(width, 400px);
+            @include into-xs(width, 300px);
+        }
+    }
+    .title {
+        font-family: "Roboto", helvetica, arial;
+        font-weight: 400;
+        margin-top: 50px;
+        padding: 30px 0;
+        text-align: center;
+    }
+    .btn {
+        font-weight: 500;
+        font-size: 1em;
+    }
+}

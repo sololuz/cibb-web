@@ -1,0 +1,25 @@
+# Local development dependencies go here
+-r base.txt
+
+
+coverage==3.7.1
+
+
+# Documentation tools
+sphinx
+alabaster # Sphinx alabaster theme
+watchdog  # Watcher of documentation changes
+
+
+# Debuging tools
+ipdb
+
+# Mail management
+#maildump
+
+
+# Deployment tools
+#fabric
+
+# django-debug-toolbar that works with Django 1.5+
+django-debug-toolbar==1.2.1

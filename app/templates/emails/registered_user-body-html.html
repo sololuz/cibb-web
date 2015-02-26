@@ -1,0 +1,20 @@
+
+{% block body %}
+<table border="0" width="100%" cellpadding="0" cellspacing="0" class="table-body">
+    <tr>
+        <td>
+            <p>Welcome to Xiberty</p>
+
+            <p>Yo need activate your account, for this follow this link:</p>
+            <a href="{{ base_url}}/confirm-account/{{ user.token }}">{{ base_url}}/confirm-account/{{ user.token }}</a><br/>
+            <p>We hope you enjoy it.</p>
+        </td>
+    </tr>
+</table>
+{% endblock %}
+
+{% block footer %}
+<p style="padding: 10px; border-top: 1px solid #eee;">
+    The Taiga development team.
+</p>
+{% endblock %}
