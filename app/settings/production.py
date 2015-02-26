@@ -59,6 +59,8 @@ ALLOWED_HOSTS = [
     "cibb.localhost",
     "cibb.jvacx.com",
     "www.cibb.jvacx.com",
+    "www.cib-bolivia.com",
+    "cib-bolivia.com",
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
