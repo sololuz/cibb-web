@@ -18,9 +18,11 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
+    {% compress css %}
         <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.css' %}">
         <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% endcompress %}
 
     {% block extrastyles %}{% endblock %}
     {% block extrahead %}{% endblock %}
@@ -40,6 +42,7 @@
 {% endif %}
 
 {% block scripts %}
+    {% compress js %}
         {# Libraries #}
         <script type="text/javascript" src="{% static 'js/libs/jquery.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/libs/bootstrap.js' %}"></script>
@@ -51,18 +54,7 @@
         <script type="text/javascript" src="{% static 'js/components/checkbox.js' %}"></script>
 
 
-        {# Layouts #}
-        <script type="text/javascript" src="{% static 'js/layout/sidebar.js' %}"></script>
-        <script>
-          $(document).on('ready', function() {
-             // Metronic.init(); // init metronic core componets
-             // Layout.init(); // init layout
-             // $('#side-menu').metisMenu();
-             $('#side-menu').metisMenu();
-          });
-        </script>
-
-
+    {% endcompress %}
 {% endblock %}
 
 {% block extrascripts %}
