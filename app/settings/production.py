@@ -28,8 +28,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'cibb_app',
-        'USER': 'cibb_user',
-        'PASSWORD': '12345678x',
+        'USER': 'jvacx',
+        'PASSWORD': 'rampagegear',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
