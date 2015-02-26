@@ -13,6 +13,16 @@ class ModelListViewSet(
         GenericViewSet):
     pass
 
+
+class ModelListCreateViewSet(
+        HeadersPaginationMixin,
+        ConditionalPaginationMixin,
+        mixins.CreateModelMixin,
+        mixins.ListModelMixin,
+        GenericViewSet):
+    pass
+
+
 class ModelCrudViewSet(HeadersPaginationMixin,
                        ConditionalPaginationMixin,
                        ModelViewSet):

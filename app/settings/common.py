@@ -62,6 +62,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     'core',
     'users',
+    'registro',
     'api',
 
     # 'account',  # custom users app
