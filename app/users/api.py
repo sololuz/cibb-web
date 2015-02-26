@@ -5,7 +5,6 @@ from core.base.viewsets import ModelCrudViewSet
 from core.exceptions import WrongArguments, NotAuthenticated, RequestValidationError
 
 from django.db.models import Q
-from django.middleware import csrf
 from django.utils.translation import ugettext_lazy as _
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
@@ -25,7 +24,6 @@ from users.serializers import (
     AccountRecoverySerializer,
     PasswordRecoverySerializer,
     ChangeEmailSerializer, CancelAccountSerializer)
-
 
 
 class UsersViewSet(ModelCrudViewSet):
@@ -207,7 +205,6 @@ class UsersViewSet(ModelCrudViewSet):
         }, status=status.HTTP_200_OK)
 
 
-    # TODO get cancel token after create account
     @list_route(methods=["POST"])
     def cancel(self, request, pk=None):
         """
