@@ -531,14 +531,22 @@
 
       <div class="form">
 
-        <form action="" method="post">
-          <input type="text" name="firstname" placeholder="Nombre"/>
-          <input type="text" name="lastname" placeholder="Apellido"/>
+        <form action="/api/registro" method="post">
+         {% csrf_token %}
+          <input type="text" name="name" placeholder="Nombres"/>
+          <input type="text" name="surname" placeholder="Apellidos"/>
           <input type="text" name="email" placeholder="Correo"/>
           <input type="text" name="address" placeholder="Direccion"/>
-          <input type="text" name="zip" placeholder="Deposito Bancario"/>
+          <input type="text" name="depot" placeholder="Deposito Bancario"/>
           <input type="text" name="city" placeholder="Ciudad"/>
-          <input type="text" name="program" id="program" placeholder="Selecciona el paquete a la derecha" disabled="disabled" />
+          <select name="package" id="package">
+            <option value="E1">Estudiante No IEEE</option>
+            <option value="E2">Estudiante IEEE</option>
+            <option value="E3">Estudiante EMB IEEE</option>
+            <option value="P1">Profesional No IEEE</option>
+            <option value="P2">Profesional IEEE</option>
+            <option value="P3">Profesional EMB IEEE</option>
+          </select>
 
           <!--textarea name="message" placeholder="Your Message *"></textarea-->
           <button name="submit" type="submit">Confirma tu inscripción</button>
@@ -549,29 +557,34 @@
 
       <div class="price">
 
-        <div>
-
+        <div class="left-block">
           <p class="amount">$130</p>
-          <h4>Estudiante <span>Save NOW</span></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac mollis risus. Nulla ornare ipsum id lacus vehicula sit amet euismod nibh sagittis.</p>
-
+          <h4>Estudiante</h4>
         </div>
 
-        <div>
+        <div class="right-block">
+          <p class="amount">$130</p>
+          <h4>Profesional</h4>
+        </div>
 
+        <div class="left-block">
           <p class="amount">$120</p>
           <h4>Estudiante IEEE</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac mollis risus. Nulla ornare ipsum id lacus vehicula sit amet euismod nibh sagittis.</p>
-
         </div>
 
+        <div class="right-block">
+          <p class="amount">$130</p>
+          <h4>Profesional IEEE</h4>
+        </div>
 
-        <div>
-
+        <div class="left-block">
           <p class="amount">$100</p>
           <h4>Estudiante EMB IEEE</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac mollis risus. Nulla ornare ipsum id lacus vehicula sit amet euismod nibh sagittis.</p>
+        </div>
 
+        <div class="right-block">
+          <p class="amount">$130</p>
+          <h4>Profesional EMB IEEE</h4>
         </div>
 
       </div>
@@ -621,7 +634,7 @@
           </div>
 
           <div id="map_canvas">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d956.2662787783107!2d-68.11202799999934!3d-16.522810005950035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915f20ee187a3103%3A0x2f2bb2b7df32a24d!2sUniversidad+Catolica+Boliviana+%22San+Pablo%22!5e0!3m2!1ses!2sbo!4v1424722712556" width="600" height="450" frameborder="0" style="border:0"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d956.2662787783107!2d-68.11202799999934!3d-16.522810005950035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915f20ee187a3103%3A0x2f2bb2b7df32a24d!2sUniversidad+Catolica+Boliviana+%22San+Pablo%22!5e0!3m2!1ses!2sbo!4v1424722712556" width="100%" height="100%" frameborder="0" style="border:0"></iframe>
           </div>
 
         </div>
