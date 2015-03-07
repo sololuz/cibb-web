@@ -3,6 +3,25 @@ $(document).ready(function() {
 
 // Contact Form
 var request;
+// using jQuery
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+var csrftoken = getCookie('csrftoken');
+
 
 $('.contact-form form').submit(function(event) {
 
@@ -14,29 +33,43 @@ $('.contact-form form').submit(function(event) {
   $('input[name="name"], input[name="email"], textarea').removeClass('error');
 
   if ($name.val() == '') {
+    event.stopPropagation();
+    event.preventDefault();
+
     $('.contact-form p.error').addClass('active').html('<i class="fa fa-exclamation-triangle"></i> Please enter your name.');
     $name.addClass('error').focus();
     return false;
   }
 
   function IsEmail(email) {
+    event.stopPropagation();
+    event.preventDefault();
+
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email);
   }
 
   if ($email.val() == '') {
+    event.stopPropagation();
+    event.preventDefault();
+
     $('p.error').addClass('active').html('<i class="fa fa-exclamation-triangle"></i> Please enter your email.');
     $email.addClass('error').focus();
     return false;
   }
 
   if(!IsEmail($email.val())) {
+    event.stopPropagation();
+    event.preventDefault();
+
     $('.contact-form p.error').addClass('active').html('<i class="fa fa-exclamation-triangle"></i> Looks like that email address is not correct. Try again.');
     $email.addClass('error').focus();
     return false;
   }
 
   if ($message.val() == "") {
+    event.stopPropagation();
+    event.preventDefault();
     $('.contact-form p.error').addClass('active').html('<i class="fa fa-exclamation-triangle"></i> Please enter your message.');
     $message.addClass('error').focus();
     return false;
@@ -52,8 +85,23 @@ $('.contact-form form').submit(function(event) {
 
   $inputs.prop('disabled', true);
 
+
+// Setup AJAX
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+
   request = $.ajax({
-    url: 'contact.php',
+    url: '/api/registro',
     type: 'post',
     data: serializedData
   });
