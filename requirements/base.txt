@@ -2,13 +2,13 @@
 ### Bleeding edge Django
 ##------------------------------------------------------------------------------
 
-django
+django==1.7.5
 
 
 ### RESTful API
 ##------------------------------------------------------------------------------
 
-djangorestframework
+djangorestframework==3.0.4
 django-oauth2-provider
 django-rest-swagger
 

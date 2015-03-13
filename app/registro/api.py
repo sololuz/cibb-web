@@ -1,8 +1,8 @@
 
 from core.base.viewsets import ModelListCreateViewSet
-from registro.models import Attend, Suscriptor
-from registro.permissions import AttendPermissionSet, SuscriptorPermissionSet
-from registro.serializers import AttendSerializer, SuscriptorSerializer
+from registro.models import Attend, Suscriptor, Contact
+from registro.permissions import AttendPermissionSet, SuscriptorPermissionSet, ContactPermissionSet
+from registro.serializers import AttendSerializer, SuscriptorSerializer, ContactSerializer
 from rest_framework.response import Response
 
 
@@ -54,3 +54,28 @@ class SuscriptorViewSet(ModelListCreateViewSet):
         Crea un suscriptor.
         """
         return super(SuscriptorViewSet, self).create(request)
+
+
+class ContactViewSet(ModelListCreateViewSet):
+    permission_classes = [ContactPermissionSet, ]
+    serializer_class = ContactSerializer
+    queryset = Contact.objects.all()
+    paginate_by = 25
+    page_size = 25
+
+    def list(self, request, *args, **kwargs):
+        """
+        Lista los suscriptores
+        """
+        page = self.paginate_queryset(self.queryset)
+        if page is not None:
+            serializer = self.get_pagination_serializer(page)
+        else:
+            serializer = self.get_serializer(self.queryset, many=True)
+        return Response(serializer.data)
+
+    def create(self, request, *args, **kwargs):
+        """
+        Crea un mesaje de contacto.
+        """
+        return super(ContactViewSet, self).create(request)

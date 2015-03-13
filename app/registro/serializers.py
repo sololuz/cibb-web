@@ -1,4 +1,4 @@
-from registro.models import Attend, Suscriptor
+from registro.models import Attend, Suscriptor, Contact
 from rest_framework import serializers
 
 
@@ -12,3 +12,8 @@ class SuscriptorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Suscriptor
+
+class ContactSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Contact

@@ -16,3 +16,9 @@ class SuscriptorPermissionSet(BasePermissionSet):
 
     list_perms = [AllowAny, ]
     create_perms = [AllowAny, ]
+
+
+class ContactPermissionSet(BasePermissionSet):
+
+    list_perms = [AllowAny, ]
+    create_perms = [AllowAny, ]

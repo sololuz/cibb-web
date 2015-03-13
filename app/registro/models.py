@@ -87,3 +87,27 @@ class Suscriptor(models.Model):
 
     def __str__(self):
         return "%s %s" % (self.email, self.date)
+
+
+class Contact(models.Model):
+    name = models.EmailField(
+        help_text='Correo Electronico del suscriptor.',
+        verbose_name='Correo Electronico.',
+    )
+
+    email = models.EmailField(
+        help_text='Correo Electronico del suscriptor.',
+        verbose_name='Correo Electronico.',
+    )
+
+    message = models.TextField(
+        help_text='Mensaje enviado.',
+        verbose_name='Mensaje.',
+    )
+
+    class Meta:
+        verbose_name = "Contacto"
+        verbose_name_plural = "Mensajes de contacto"
+
+    def __str__(self):
+        return "%s %s" % (self.email, self.message)

@@ -1,0 +1,55 @@
+<div class="registration">
+    <div class="container">
+        <h2>Precios y PreRegistro</h2>
+        <p class="subtitle"><strong>Solamente 150 cupos libres</strong> Has tu pre-inscripcion .</p>
+        <p class="desc"> </p>
+        <h3><strong>Llena este formulario con tu información</strong></h3>
+        <div class="form">
+            <form action="" id="reForm">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Nombres"/>
+                <input type="text" name="surname" placeholder="Apellidos"/>
+                <input type="text" name="email" placeholder="Correo"/>
+                <input type="text" name="address" placeholder="Direccion"/>
+                <input type="text" name="depot" placeholder="Deposito Bancario"/>
+                <input type="text" name="city" placeholder="Ciudad"/>
+                <select name="package" id="package">
+                    <option value="E1">Estudiante No IEEE</option>
+                    <option value="E2">Estudiante IEEE</option>
+                    <option value="E3">Estudiante EMB IEEE</option>
+                    <option value="P1">Profesional No IEEE</option>
+                    <option value="P2">Profesional IEEE</option>
+                    <option value="P3">Profesional EMB IEEE</option>
+                </select>
+                <!--textarea name="message" placeholder="Your Message *"></textarea-->
+                <button name="submit" type="submit">Confirma tu inscripción</button>
+            </form>
+        </div>
+        <div class="price">
+            <div class="left-block">
+                <p class="amount">$130</p>
+                <h4>Estudiante</h4>
+            </div>
+            <div class="right-block">
+                <p class="amount">$130</p>
+                <h4>Profesional</h4>
+            </div>
+            <div class="left-block">
+                <p class="amount">$120</p>
+                <h4>Estudiante IEEE</h4>
+            </div>
+            <div class="right-block">
+                <p class="amount">$130</p>
+                <h4>Profesional IEEE</h4>
+            </div>
+            <div class="left-block">
+                <p class="amount">$100</p>
+                <h4>Estudiante EMB IEEE</h4>
+            </div>
+            <div class="right-block">
+                <p class="amount">$130</p>
+                <h4>Profesional EMB IEEE</h4>
+            </div>
+        </div>
+    </div>
+</div>

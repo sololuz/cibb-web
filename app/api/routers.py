@@ -1,5 +1,5 @@
 # -*- encoding:utf-8 -*-
-from registro.api import AttendViewSet, SuscriptorViewSet
+from registro.api import AttendViewSet, SuscriptorViewSet, ContactViewSet
 from rest_framework.routers import DefaultRouter
 
 
@@ -12,3 +12,4 @@ router.register('auth', AuthViewSet, base_name="auth")
 router.register('users', UsersViewSet, base_name="users")
 router.register('registro', AttendViewSet, base_name="registro")
 router.register('suscriptores', SuscriptorViewSet, base_name="suscriptores")
+router.register('contacts', ContactViewSet, base_name="contactos")
