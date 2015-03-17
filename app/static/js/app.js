@@ -1,10 +1,11 @@
 $(document).ready(function(){
 
-    // var SERVER = "http://cib-bolivia.com"
-    var SERVER = "http://localhost:5000"
+    var SERVER = "http://cib-bolivia.com"
+    // var SERVER = "http://localhost:5000"
 
     var REG_ENDPOINT = SERVER+"/api/registro";
     var SUS_ENDPOINT = SERVER+"/api/suscriptors";
+    var QUERY_ENDPOINT = SERVER+"/api/contacts";
 
     var REG_EXP = {
         name : /^[A-Za-z0-9 ]{3,20}$/,
@@ -14,10 +15,115 @@ $(document).ready(function(){
         filled :  /.+/,
     }
 
-    function register(obj){
-        console.log("registrando");
+
+    // using jQuery
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
     }
 
+    var csrftoken = getCookie('csrftoken');
+
+    function csrfSafeMethod(method) {
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+
+    // FORMULARIO DE CONTACTO
+    var $contacForm = $('.contact-form form');
+    $contacForm.find('#sendContact').click(function(e) {
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        console.log("guardando Conta");
+
+        var $name = $( $contacForm.get(0).name );
+        var $email = $( $contacForm.get(0).email );
+        var $message = $contacForm.find('textarea');
+
+        $('.contact-form p.error').show();
+        $('input[name="name"], input[name="email"], textarea').removeClass('error');
+
+        // e.stopPropagation();
+        e.preventDefault();
+
+
+
+        var validate = true;
+        if ($name.val() == '') {
+            $('.contact-form p.error').addClass('active').html('<i class="fa fa-exclamation-triangle"></i> Please enter your name.');
+            $name.addClass('error').focus();
+            validate = false;
+        }
+
+        function IsEmail(email) {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
+        }
+
+        if ($email.val() == '') {
+            $('p.error').addClass('active').html('<i class="fa fa-exclamation-triangle"></i> Please enter your email.');
+            $email.addClass('error').focus();
+            validate = false;
+        }
+
+        console.log("IsEmail"+ IsEmail($email.val()) );
+
+        if(!IsEmail($email.val())) {
+            $('.contact-form p.error').addClass('active').html('<i class="fa fa-exclamation-triangle"></i> Looks like that email address is not correct. Try again.');
+            $email.addClass('error').focus();
+            validate = false;
+        }
+
+        if ($message.val() == "") {
+            $('.contact-form p.error').addClass('active').html('<i class="fa fa-exclamation-triangle"></i> Please enter your message.');
+            $message.addClass('error').focus();
+            validate = false;
+        }
+
+
+        if(validate){
+            var consulta = {
+                name: $name.val(),
+                email: $email.val(),
+                message: $message.val()
+            }
+            var request = $.ajax({
+                url: QUERY_ENDPOINT,
+                method: 'POST',
+                data: consulta
+            });
+            request.done(function (response, textStatus, jqXHR){
+                $('.contact-form p.error').hide();
+                $('.contact-form p.message').html('Consulta enviado, muchas gracias.').fadeOut(2000);
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.error('The following error occured: '+ textStatus, errorThrown);
+            });
+        }
+    });
+
+
+    //  FORMULARIO DE REGISTRO
     var $regForm = $("#regForm");
     $regForm.name = $( $regForm.get(0).name );
     $regForm.surname = $( $regForm.get(0).surname );
@@ -103,6 +209,7 @@ $(document).ready(function(){
         }
     });
 
+    // FORMULARIO DE SUSCRIPCION
     var $susForm = $("#suscriptorForm");
 
     $susForm.email = $( $susForm.get(0).email );
@@ -130,7 +237,6 @@ $(document).ready(function(){
                     console.log(data);
                 },
                 error: function(a,b,c){
-
                     console.log(a,b,c);
                 }
             })

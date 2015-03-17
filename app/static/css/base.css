@@ -1,3 +1,4 @@
-#regForm .error {
-    border-color: #c0392b;
+#regForm .error,
+#suscriptorForm .error {
+    border: 2px solid #c0392b;
 }
