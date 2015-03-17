@@ -38,14 +38,6 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
-    'crispy_forms',  # Form layouts
-    'avatar',  # for user avatars
-    'allauth',  # registration
-    'allauth.account',  # registration
-    'allauth.socialaccount',  # registration
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.twitter',
     'compressor',  # Asset files compressor
     'sorl.thumbnail',
 
@@ -53,8 +45,6 @@ THIRD_PARTY_APPS = (
     'rest_framework',  # API REST framework
     'rest_framework_swagger',  # API Documentation
     'corsheaders',  # CORS Protection
-    'provider',  # OAuth2 Provider
-    'provider.oauth2',  # OAuth2 Provider
 
 )
 
