@@ -11,5 +11,5 @@ from auth.api import AuthViewSet
 router.register('auth', AuthViewSet, base_name="auth")
 router.register('users', UsersViewSet, base_name="users")
 router.register('registro', AttendViewSet, base_name="registro")
-router.register('suscriptores', SuscriptorViewSet, base_name="suscriptores")
+router.register('suscriptors', SuscriptorViewSet, base_name="suscriptores")
 router.register('contacts', ContactViewSet, base_name="contactos")

@@ -1,7 +1,10 @@
 $(document).ready(function(){
 
-    var REG_ENDPOINT = "http://cib-bolivia.com/api/registro";
-    // var REG_ENDPOINT = "http://localhost:5000/api/registro";
+    // var SERVER = "http://cib-bolivia.com"
+    var SERVER = "http://localhost:5000"
+
+    var REG_ENDPOINT = SERVER+"/api/registro";
+    var SUS_ENDPOINT = SERVER+"/api/suscriptors";
 
     var REG_EXP = {
         name : /^[A-Za-z0-9 ]{3,20}$/,
@@ -100,9 +103,39 @@ $(document).ready(function(){
         }
     });
 
+    var $susForm = $("#suscriptorForm");
 
+    $susForm.email = $( $susForm.get(0).email );
+    $susForm.submit = $susForm.find("button");
 
+    $susForm.submit.click(function(e){
+        e.preventDefault();
+        e.stopPropagation();
 
+        var validate = true;
+        if( !REG_EXP.email.test($susForm.email.val()) ){
+            $susForm.email.addClass("error'");
+            $susForm.email.focus();
+            validate = false;
+        } else $susForm.email.removeClass("error");
+
+        if(validate) {
+            var suscriptor = { email: $susForm.email.val() }
+
+            $.ajax({
+                url: SUS_ENDPOINT,
+                data: suscriptor,
+                method: "POST",
+                success: function(data){
+                    console.log(data);
+                },
+                error: function(a,b,c){
+
+                    console.log(a,b,c);
+                }
+            })
+        }
+    });
 
 
 

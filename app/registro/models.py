@@ -90,9 +90,10 @@ class Suscriptor(models.Model):
 
 
 class Contact(models.Model):
-    name = models.EmailField(
+    name = models.CharField(
         help_text='Correo Electronico del suscriptor.',
         verbose_name='Correo Electronico.',
+        max_length=100,
     )
 
     email = models.EmailField(

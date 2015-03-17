@@ -1,8 +1,8 @@
 $(document).ready(function() {
     "use strict";
 
-    var QUERY_ENDPOINT = "http://cib-bolivia/api/contacts";
-    // var QUERY_ENDPOINT = "http://localhost:5000/api/contacts";
+    // var QUERY_ENDPOINT = "http://cib-bolivia/api/contacts";
+    var QUERY_ENDPOINT = "http://localhost:5000/api/contacts";
 
     // using jQuery
     function getCookie(name) {
@@ -23,17 +23,30 @@ $(document).ready(function() {
 
     var csrftoken = getCookie('csrftoken');
 
-    var $contacForm = $('.contact-form form');
+    function csrfSafeMethod(method) {
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
 
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+
+
+    var $contacForm = $('.contact-form form');
     $contacForm.find('#sendContact').click(function(e) {
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        console.log("guardando Conta");
 
         var $name = $( $contacForm.get(0).name );
         var $email = $( $contacForm.get(0).email );
         var $message = $contacForm.find('textarea');
-
-        console.log($name);
-        console.log($email);
-        console.log($message);
 
         $('.contact-form p.error').show();
         $('input[name="name"], input[name="email"], textarea').removeClass('error');
@@ -81,17 +94,7 @@ $(document).ready(function() {
             console.log("todo valido");
 
 
-            function csrfSafeMethod(method) {
-                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-            }
 
-            $.ajaxSetup({
-                beforeSend: function(xhr, settings) {
-                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                    }
-                }
-            });
 
             var consulta = {
                 name: $name.val(),

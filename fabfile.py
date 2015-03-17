@@ -232,6 +232,8 @@ class Conf(object):
 
             sudo('chown -R %s:%s %s.git'%(app["user"], app["group"], app["name"]))
 
+    @staticmethod
+    def add_remote():
         local('git remote remove %s'%env.remote)
         local('git remote add %s %s@%s:%s/%s.git'%(
             env.remote,app["user"], env.hosts[0], USER_HOME, app["name"],
@@ -364,7 +366,7 @@ def deploy(*args):
             with settings(warn_only=True):
                 execute(Project.push, hosts=[servers[server]["domain"], ])
                 # execute(Project.clean_logs, hosts=[servers[server]["domain"], ])
-                execute(Project.clean_cache, hosts=[servers[server]["domain"], ])
+                # execute(Project.clean_cache, hosts=[servers[server]["domain"], ])
                 execute(Project.install, hosts=[servers[server]["domain"], ])
                 # execute(Project.restart, hosts=[servers[server]["domain"], ])
         else:
@@ -391,6 +393,7 @@ def init(*args):
                 execute(Conf.roles, hosts=[HOST,])
                 execute(Conf.postgresql, hosts=[HOST,])
                 execute(Conf.git, hosts=[HOST,])
+                execute(Conf.add_remote, hosts=[HOST,])
                 execute(Conf.nginx, hosts=[HOST,])
                 execute(Conf.gunicorn, hosts=[HOST,])
                 execute(Conf.supervisor, hosts=[HOST,])
@@ -417,7 +420,7 @@ def clean(*args):
             print_servers()
 
 def restart(*args):
-    """Clean app and related files od server"""
+    """ Restart app servers """
     if len(args) <= 0:
         print_servers()
     for server in args:
@@ -431,6 +434,27 @@ def restart(*args):
                     servers[server]["ssh_port"],
                 )
                 execute(Server.restart_services, hosts=[HOST,])
+                execute(Conf.fix_permissions, hosts=[HOST,])
+        else:
+            print_servers()
+
+
+def add_remote(*args):
+    """ Restart app servers """
+    if len(args) <= 0:
+        print_servers()
+    for server in args:
+        if server in servers.keys():
+            env.user = app["superuser"]
+            env.hosts = [servers[server]["domain"], ]
+            env.path = servers[server]["path"]
+            env.remote = server
+            with settings(warn_only=True):
+                HOST = "%s:%s" % (
+                    servers[server]["domain"],
+                    servers[server]["ssh_port"],
+                )
+                execute(Conf.add_remote, hosts=[HOST,])
         else:
             print_servers()
 
