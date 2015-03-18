@@ -3,9 +3,19 @@ $(document).ready(function(){
     var SERVER = "http://cib-bolivia.com"
     // var SERVER = "http://localhost:5000"
 
-    var REG_ENDPOINT = SERVER+"/api/registro";
-    var SUS_ENDPOINT = SERVER+"/api/suscriptors";
-    var QUERY_ENDPOINT = SERVER+"/api/contacts";
+    var REG_ENDPOINT = "/api/registro";
+    var SUS_ENDPOINT = "/api/suscriptors";
+    var QUERY_ENDPOINT = "/api/contacts";
+
+
+    var MESSAGE = {
+        contacto_ok: "Cracias por contactarse con nosotros.",
+        contacto_fail: "No se pudo establecer conexion",
+        suscripcion_ok: "Gracias por suscribirse a nuestro boletin.",
+        suscripcion_fail: "Su suscripcion no se completo.",
+        registro_ok: "Gracias por registrarse al evento.",
+        registro_fail: "Su registro no pudo concretarse."
+    }
 
     var REG_EXP = {
         name : /^[A-Za-z0-9 ]{3,20}$/,
@@ -15,6 +25,36 @@ $(document).ready(function(){
         filled :  /.+/,
     }
 
+    toastr.options = {
+      "closeButton": false,
+      "debug": false,
+      "newestOnTop": false,
+      "progressBar": false,
+      "positionClass": "toast-top-center",
+      "preventDuplicates": false,
+      "onclick": null,
+      "showDuration": "500",
+      "hideDuration": "1200",
+      "timeOut": "5000",
+      "extendedTimeOut": "500",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut",
+      "preventDuplicates" : true,
+      "closeButton" : true
+    };
+
+    var Loader = {
+        open: function(){
+            document.getElementById('modalLoader').style.display = 'block';
+            document.getElementById('fade').style.display = 'block';
+        },
+        close: function(){
+            document.getElementById('modalLoader').style.display = 'none';
+            document.getElementById('fade').style.display = 'none';
+        }
+    }
 
     // using jQuery
     function getCookie(name) {
@@ -112,12 +152,20 @@ $(document).ready(function(){
                 method: 'POST',
                 data: consulta
             });
+
+            Loader.open();
+
             request.done(function (response, textStatus, jqXHR){
                 $('.contact-form p.error').hide();
                 $('.contact-form p.message').html('Consulta enviado, muchas gracias.').fadeOut(2000);
+                Loader.close();
+                toastr["success"](MESSAGE.contacto_ok);
             });
             request.fail(function (jqXHR, textStatus, errorThrown){
                 console.error('The following error occured: '+ textStatus, errorThrown);
+                Loader.close();
+                toastr["error"](MESSAGE.contacto_fail);
+
             });
         }
     });
@@ -195,15 +243,21 @@ $(document).ready(function(){
                 package: $regForm.package.val()
             }
 
+            Loader.open();
+
             $.ajax({
                 url: REG_ENDPOINT,
                 data: person,
                 method: "POST",
                 success: function(data){
                     console.log(data);
+                    Loader.close();
+                    toastr["success"](MESSAGE.registro_ok);
                 },
                 error: function(a,b,c){
                     console.log(a,b,c);
+                    Loader.close();
+                    toastr["error"](MESSAGE.registro_fail);
                 }
             })
         }
@@ -229,15 +283,21 @@ $(document).ready(function(){
         if(validate) {
             var suscriptor = { email: $susForm.email.val() }
 
+            Loader.open();
+
             $.ajax({
                 url: SUS_ENDPOINT,
                 data: suscriptor,
                 method: "POST",
                 success: function(data){
                     console.log(data);
+                    Loader.close();
+                    toastr["success"](MESSAGE.suscripcion_ok);
                 },
                 error: function(a,b,c){
                     console.log(a,b,c);
+                    Loader.close();
+                    toastr["error"](MESSAGE.suscripcion_fail);
                 }
             })
         }
