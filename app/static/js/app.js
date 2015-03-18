@@ -160,6 +160,8 @@ $(document).ready(function(){
                 $('.contact-form p.message').html('Consulta enviado, muchas gracias.').fadeOut(2000);
                 Loader.close();
                 toastr["success"](MESSAGE.contacto_ok);
+                $contacForm.get(0).reset();
+                $name.focus();
             });
             request.fail(function (jqXHR, textStatus, errorThrown){
                 console.error('The following error occured: '+ textStatus, errorThrown);
@@ -253,6 +255,8 @@ $(document).ready(function(){
                     console.log(data);
                     Loader.close();
                     toastr["success"](MESSAGE.registro_ok);
+                    $regForm.get(0).reset();
+                    $regForm.name.focus();
                 },
                 error: function(a,b,c){
                     console.log(a,b,c);
@@ -293,6 +297,8 @@ $(document).ready(function(){
                     console.log(data);
                     Loader.close();
                     toastr["success"](MESSAGE.suscripcion_ok);
+                    $susForm.get(0).reset();
+                    $susForm.email.focus();
                 },
                 error: function(a,b,c){
                     console.log(a,b,c);
