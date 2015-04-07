@@ -67,6 +67,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 INSTALLED_APPS += ("djrill", )
 
+WEBSITE_BASE_URL = 'http://cib-bolivia.com'
+
 
 
     # # This ensures that Django will be able to detect a secure connection

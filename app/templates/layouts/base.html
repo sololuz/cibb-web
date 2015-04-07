@@ -1,43 +1,72 @@
-{% load i18n %}
-{% load staticfiles compress %}
+{% load static from staticfiles %}
 <!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <title> Congreso de Ingenieria BioMedica </title>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %} &#124; {{ website_name }}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block description %}{{ website_description }}{% endblock %}">
+    <meta name="author" content="{% block author %}Victor Aguilar - @jvacx{% endblock %}">
 
-        <meta name="keywords" content="" />
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'ico/apple-touch-icon-144-precomposed.png' %}">
+    <link rel="shortcut icon" href="{% static 'ico/favicon.png' %}">
 
-        {% compress css %}
-            <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" />
-            <link href="{% static 'js/jquery-ui-1.11.2/jquery-ui.min.css' %}" rel="stylesheet" />
-            <link href="{% static 'css/animate.css' %}" rel="stylesheet" />
-            <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
-            <link href="{% static 'css/toastr.css' %}" rel="stylesheet" type="text/css" />
-            <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css" />
-        {% endcompress %}
-    </head>
-    <body>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 
-        <div class="page">
-            {% block page %} {% endblock  %}
-        </div>
-        {% include "partials/back.html" %}
-        {% include "partials/contact_form.html" %}
+        <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
-        {% compress js %}
-            <script src="{% static 'js/jquery.js' %}"></script>
-            <script src="{% static 'js/jquery-ui-1.11.2/jquery-ui.min.js' %}"></script>
-            <script src="{% static 'js/flexslider/jquery.flexslider-min.js' %}"></script>
-            <script src="{% static 'js/jquery.parallax-1.1.3.js' %}"></script>
-            <script src="{% static 'js/jquery.inview.min.js' %}"></script>
-            <script src="{% static 'js/theme.js' %}"></script>
-            <script src="{% static 'js/toastr.js' %}"></script>
-            <script src="{% static 'js/app.js' %}"></script>
-        {% endcompress %}
+    {% block extrastyles %}{% endblock %}
+    {% block extrahead %}{% endblock %}
 
-        {% block extrascripts %}{% endblock extrascripts %}
-    </body>
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+{% block content %}
+    <div class="container">
+        {% include 'partials/messages.html' %}
+        {% block container %}{% endblock %}
+    </div>
+{% endblock %}
+
+{% if debug %}
+{% else %}
+{% endif %}
+
+{% block scripts %}
+        {# Libraries #}
+        <script type="text/javascript" src="{% static 'js/libs/jquery.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/libs/bootstrap.js' %}"></script>
+
+
+        {# Plugins #}
+
+        {# Components #}
+        <script type="text/javascript" src="{% static 'js/components/checkbox.js' %}"></script>
+
+
+        {# Layouts #}
+        <script type="text/javascript" src="{% static 'js/layout/sidebar.js' %}"></script>
+        <script>
+          $(document).on('ready', function() {
+             // Metronic.init(); // init metronic core componets
+             // Layout.init(); // init layout
+             // $('#side-menu').metisMenu();
+             $('#side-menu').metisMenu();
+          });
+        </script>
+
+
+{% endblock %}
+
+{% block extrascripts %}
+{% endblock %}
+
+</body>
 </html>

@@ -1,0 +1,20 @@
+{% extends 'layouts/base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Home" %}{% endblock %}
+{% block content %}
+    {% include "partials/_navbar-base.html" %}
+    <section class="app-container">
+        {% include "partials/_content.html" %}
+        <div class="jumbotron">
+            <div class="container">
+              <p>Proximamente..</p>
+            </div>
+        </div>
+    </section>
+    <footer></footer>
+    {% block extrascripts %}{% endblock extrascripts %}
+{% endblock %}
+
+
+
+
